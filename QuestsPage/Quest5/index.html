@@ -15,15 +15,17 @@
     <h1>Qual é a resposta correta?</h1>
 
     <div class="button-grid">
-        <button>33</button>
-        <button>6</button>
-        <button>Erro</button>
-        <button>NaN</button>
+        <button onclick="verificar('33')">33</button>
+        <button onclick="verificar('6')">6</button>
+        <button onclick="verificar('Erro')">Erro</button>
+        <button onclick="verificar('NaN')">NaN</button>
     </div>
     <div class="hidden-question">
         Qual é o resultado da expressão `3 + '3'` em JavaScript?
     </div>
-
   </div>
+
+  <!-- Referencia o arquivo de JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
