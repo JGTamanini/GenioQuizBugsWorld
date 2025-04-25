@@ -4,6 +4,7 @@ const bloqueado = document.querySelector(".button-zerado");
 
 // Deixa o botão C com posição absoluta
 buttonC.style.position = "absolute";
+// Deixa o botão C na frente dos outros
 buttonC.style.zIndex = "9999;"
 
 // Pega as dimensões do container
@@ -12,10 +13,12 @@ const containerRect = container.getBoundingClientRect();
 
 // Função para mover o botão C para uma nova posição
 function moveButton() {
+    // Escolhe as coordenadas
     const maxX = containerRect.width - buttonC.offsetWidth;
     const maxY = containerRect.height - buttonC.offsetHeight;
   
-    const elementosBloqueio = Array.from(document.querySelectorAll("h1, .button")); // todos que ele deve evitar
+    // Evita tocar em elementos citados a baixo
+    const elementosBloqueio = Array.from(document.querySelectorAll("h1, .button"));
   
     let newX, newY, tentativas = 0;
     let sobrepoe;
@@ -48,7 +51,9 @@ function moveButton() {
       if (tentativas > 100) break;
   
     } while (sobrepoe);
-  
+
+
+    // Muda as coordenadas do botão
     buttonC.style.left = `${newX}px`;
     buttonC.style.top = `${newY}px`;
   }
@@ -72,12 +77,20 @@ container.addEventListener("mousemove", (event) => {
   }     
 });
 
-// Se quiser deixar ainda mais troll:
 // Bloqueia o clique mesmo que consiga chegar
 buttonC.addEventListener("click", (e) => {
   e.preventDefault();
   alert("Haha, achou que ia clicar? RESPOSTA ERRADAAAAAAAAAAAAAAAAAAAAAAA");
 });
+
+// Função que verifica se o botão escolhido é correto
+function verificar(correto) {
+  if (correto) {
+    window.location.href = "" // Próxima pergunta
+  } else {
+    window.location.href = "/GameOverPage/index.html" // Pagina de Game Over
+  }
+}
 
 
 
