@@ -1,3 +1,10 @@
+import {QuestManager} from "../Classes/QuestManager.js"
+
+const questManager = new QuestManager();
+
+function iniciar() {
+    questManager.iniciarJogo();
+}
 function instrucoes() {
     document.getElementById("modal-instrucoes").classList.remove("hidden");
 }
