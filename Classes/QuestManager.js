@@ -2,7 +2,7 @@ export class GerenciadorDeFases {
     constructor() {
       this.totalFases = 15;
       this.fasesPorJogo = 10;
-      this.prefixoCaminho = "/QuestsPages/Quest";}
+      this.prefixoCaminho = "/QuestsPage/Quest";}
   
     iniciarJogo() {
       const ids = Array.from({ length: this.totalFases }, (_, i) => i + 1);
