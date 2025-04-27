@@ -1,97 +1,73 @@
-const perguntas = [
-    {
-      id: 1,
-      texto: "Qual é a capital da França?",
-      opcoes: ["Paris", "Londres", "Berlim", "Roma"],
-      correta: "Paris"
-    },
-    {
-      id: 2,
-      texto: "O que é HTML?",
-      opcoes: ["Linguagem de marcação", "Estilo", "Programação", "Banco de dados"],
-      correta: "Linguagem de marcação"
-    },
-    {
-      id: 8,
-      tipo: "loop",
-      texto: "Essa pergunta já foi feita?"
-    }
-];
-  
-let perguntasFeitas = [];
-let perguntaAtual = null;
-  
-function sortearProxima() {
-    const restantes = perguntas.filter(p => !perguntasFeitas.includes(p.id));
-    const aleatoria = restantes[Math.floor(Math.random() * restantes.length)];
-    perguntaAtual = aleatoria;
-    perguntasFeitas.push(aleatoria.id);
-  
-    if (aleatoria.tipo === "loop") {
-        mostrarPerguntaLoop();
-    } else {
-        mostrarPerguntaNormal(aleatoria);
-    }
-}
-  
-function mostrarPerguntaNormal(p) {
-    // Substitui o conteúdo do <h1> com a pergunta
-    document.getElementById("pergunta").innerText = p.texto;
-  
-    // Atualiza a instrução
-    document.getElementById("instrucao").innerText = "Essa pergunta já foi feita?";
+import { QuestHistory } from '../../Classes/QuestHistory.js'; 
+import { GerenciadorDeFases } from '../../Classes/QuestManager.js'; 
+import { Fase } from '../../Classes/Quests.js'; 
 
-    const botoes = document.querySelectorAll("button");
-    botoes[0].innerText = "Sim";
-    botoes[1].innerText = "Não";
 
-    // Exibir os botões de Sim e Não
-    botoes[0].style.display = "inline-block";
-    botoes[1].style.display = "inline-block";
+document.addEventListener("DOMContentLoaded", function() {
+    // Instanciando os objetos necessários
+    const questHistory = new QuestHistory();
+    const gerenciadorDeFases = new GerenciadorDeFases();
 
-    botoes[0].onclick = () => {
-        alert("Boa! Vamos continuar.");
-        sortearProxima();
-    };
-
-    botoes[1].onclick = () => {
-        alert("Resposta errada! Game Over.");
-    };
-}
-  
-function mostrarPerguntaLoop() {
-    const jaFoiFeita = perguntasFeitas.includes(perguntaAtual.id);
-
-    document.getElementById("pergunta").innerText = perguntaAtual.texto;
-  
-    // Atualiza a instrução para a pergunta de loop
-    document.getElementById("instrucao").innerText = "Essa pergunta já foi feita?";
-
-    const btnSim = document.getElementById("btnSim");
-    const btnNao = document.getElementById("btnNao");
-
-    // Exibir os botões e adicionar o comportamento
-    btnSim.style.display = "inline-block";
-    btnNao.style.display = "inline-block";
-  
-    btnSim.onclick = () => {
-        if (jaFoiFeita) {
-            alert("Boa! Vamos continuar.");
-            sortearProxima();
+    function exibirPergunta() {
+        const faseAtual = parseInt(sessionStorage.getItem("faseAtual")) || 0;
+        const fasesSelecionadas = questHistory.fasesSelecionadas;  // Agora deve conter os objetos completos
+      
+        console.log("Fase Atual:", faseAtual);
+        console.log("Fases Selecionadas:", fasesSelecionadas);
+        
+        if (fasesSelecionadas.length > 0 && faseAtual < fasesSelecionadas.length) {
+          const faseAtualObjeto = fasesSelecionadas[faseAtual];  // Agora você tem o objeto completo da fase
+          console.log("Fase Atual Objeto:", faseAtualObjeto);
+      
+          const pergunta = faseAtualObjeto.pergunta;  // A pergunta está no objeto da fase
+      
+          if (pergunta) {
+            document.getElementById('pergunta').innerText = pergunta;
+      
+            const perguntaJaFeita = questHistory.fasesSelecionadas.slice(0, faseAtual).some(fase => fase.id === faseAtualObjeto.id);
+      
+            document.getElementById('instrucao').innerText = perguntaJaFeita ? "Essa pergunta já foi feita!" : "Essa pergunta ainda não foi feita.";
+      
+            definirRespostas(perguntaJaFeita);
+          } else {
+            console.error("Pergunta não encontrada para a fase", faseAtualObjeto.id);
+          }
         } else {
-            alert("Resposta errada! Game Over.");
+          console.error("Fase atual não é válida ou não há fases selecionadas.");
         }
-    };
-  
-    btnNao.onclick = () => {
-        if (!jaFoiFeita) {
-            alert("Boa! Vamos continuar.");
-            sortearProxima();
+      }
+
+    // Função para definir as respostas de "Sim" ou "Não"
+    function definirRespostas(perguntaJaFeita) {
+        const btnSim = document.getElementById('btnSim');
+        const btnNao = document.getElementById('btnNao');
+
+        // Verifica se os botões existem
+        if (btnSim && btnNao) {
+            // Se a pergunta foi feita antes, a resposta certa é "Sim"
+            if (perguntaJaFeita) {
+                btnSim.onclick = () => {
+                    alert("Resposta Correta!");
+                    gerenciadorDeFases.irParaProximaFase(); // Vai para a próxima fase
+                };
+                btnNao.onclick = () => {
+                    alert("Resposta Errada!");
+                };
+            } else {
+                // Se a pergunta não foi feita antes, a resposta certa é "Não"
+                btnNao.onclick = () => {
+                    alert("Resposta Correta!");
+                    gerenciadorDeFases.irParaProximaFase(); // Vai para a próxima fase
+                };
+                btnSim.onclick = () => {
+                    alert("Resposta Errada!");
+                };
+            }
         } else {
-            alert("Resposta errada! Game Over.");
+            console.error("Botões não encontrados!");
         }
-    };
-}
-  
-// Inicia o jogo com a primeira pergunta
-sortearProxima();
+    }
+
+    // Chamando a função para exibir a pergunta
+    exibirPergunta(); 
+});

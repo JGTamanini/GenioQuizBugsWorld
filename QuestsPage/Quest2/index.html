@@ -7,20 +7,24 @@
 </head>
 <body>
 
+  <!-- Fundo e efeito de overlay -->
   <div class="background-image"></div>
-
   <div class="overlay"></div>
 
   <div class="container">
+    <!-- Enunciado da pergunta -->
     <h1>Qual a letra entre A e C?</h1>
+
+    <!-- Botões só para confundir (não é para clicar neles) -->
     <div class="button-grid">
-      <button>S</button>
-      <button>D</button>
-      <button>Z</button>
-      <button>X</button>
+      <button id="btnA">S</button>
+      <button id="btnB">D</button>
+      <button id="btnC">Z</button>
+      <button id="btnD">X</button>
     </div>
   </div>
 
-  <script type="module" src="script.js"></script>
+  <!-- Script que escuta o teclado -->
+  <script type="module" src="script.js" defer></script>
 </body>
 </html>

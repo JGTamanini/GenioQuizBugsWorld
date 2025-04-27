@@ -1,4 +1,4 @@
-// Defina as fases do jogo
+
 export const fases = [
     { id: 1, pergunta: "Qual palavra está correta?" },
     { id: 2, pergunta: "Qual a letra entre A e C?" },
@@ -14,22 +14,4 @@ export const fases = [
     { id: 13, pergunta: "QUAL A PRIMEIRA ALTERNATIVA?" },
     { id: 14, pergunta: "Qual desses é um tipo primitivo em JavaScript?" },
     { id: 15, pergunta: "Clique duas vezes no botão" }
-];
-
-// Classe Fase
-export class Fase {
-    constructor(id, pergunta) {
-        this.id = id;
-        this.pergunta = pergunta;
-    }
-
-    static obterPerguntaPorId(id, fases) {
-        const fase = fases.find(fase => fase.id === id); // Encontra a fase com o ID correspondente
-        if (fase) {
-            return fase.pergunta; // Retorna a pergunta da fase
-        } else {
-            console.error(`Fase com id ${id} não encontrada!`);
-            return null;
-        }
-    }
-}
+  ];

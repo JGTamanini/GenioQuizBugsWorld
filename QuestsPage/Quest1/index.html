@@ -8,20 +8,25 @@
 </head>
 <body>
 
+  <!-- Fundo e overlay -->
   <div class="background-image"></div>
-
   <div class="overlay"></div>
 
   <div class="container">
+    <!-- Enunciado da pergunta -->
     <h1>Qual palavra está correta?</h1>
+
+    <!-- Grid dos botões de resposta -->
     <div class="button-grid">
+        <!-- Cada botão é uma possível resposta -->
         <button>c0rreta</button>     <!-- zero no lugar do "o" -->
-        <button>correta</button>     <!-- correta de verdade -->
+        <button>correta</button>     <!-- correta de verdade (RESPOSTA CERTA) -->
         <button>còrreta</button>     <!-- acento grave -->
-        <button>coɾɾeta</button>     <!-- "ɾ" minúsculo (Unicode: U+027E) -->
-      </div>
+        <button>coɾɾeta</button>     <!-- "ɾ" minúsculo (Unicode) -->
+    </div>
   </div>
 
-  <script type="module" src="script.js"></script>
+  <!-- Importação do script que vai controlar os cliques -->
+  <script type="module" src="script.js" defer></script>
 </body>
 </html>
