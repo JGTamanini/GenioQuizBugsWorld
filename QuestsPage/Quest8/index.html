@@ -2,26 +2,30 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Gênio Quiz: Mundo dos Bugs</title>
-  <link rel="stylesheet" href="style.css">
+  <title>CLique na letra "C" !!!</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="background"></div>
+  <div class="background-image"></div>
 
   <div class="overlay"></div>
 
-  <div class="popup-container">
-    <div class="popup">
-      <h2>Permitir cookies?</h2>
-      <div class="button-grid">
-        <button id="btnSim" onclick="clicar('Sim')">Sim</button>
-        <button id="btnNao" onclick="clicar('Não')">Não</button>
-        <button id="btnX" onclick="clicar('X')">X</button>
-      </div>
+  <div class="container">
+    <div class="flex">
+      <h1>CLique na letra&nbsp;</h1>
+      <button onclick="verificar(true)" class="button-zerado"><h1>"C"</h1></button>
+      <h1>&nbsp;!!!</h1>
+    </div>
+ 
+    <div class="button-grid">
+        <button onclick="verificar(false)" class="button">A</button>
+        <button onclick="verificar(false)" class="button">B</button>
+        <button onclick="verificar(false)" class="button">C</button>
+        <button onclick="verificar(false)" class="button">D</button>
     </div>
   </div>
-  
+
   <script type="module" src="script.js"></script>
 </body>
 </html>

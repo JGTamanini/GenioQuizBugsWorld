@@ -57,6 +57,7 @@
   .button-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
+    gap: 70px 120px;
     justify-content: center;
     align-items: center;
   }
@@ -81,3 +82,32 @@
     border-color: #00aaff;
     background: rgba(255, 255, 255, 0.15);
   }
+
+  .progress-bar-wrapper {
+    width: 80%;
+    height: 20px;
+    background-color: #ccc;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .progress-bar-fake {
+    width: 0%;
+    height: 100%;
+    background-color: #ff4444;
+    animation: fakeProgress 5s linear forwards;
+  }
+  
+  @keyframes fakeProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+  
+  .contador-container {
+    margin-bottom: 40px;
+    color: white;
+    font-size: 36px;
+    text-shadow: 2px 2px 8px #000;
+  }
+  

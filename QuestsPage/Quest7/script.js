@@ -1,27 +1,42 @@
-function clicar(botaoId) {
-    let clicados = JSON.parse(localStorage.getItem('clicados')) || [];
-  
-    if (clicados.includes(botaoId)) {
-      return;
-    }
-  
-    clicados.push(botaoId);
-    localStorage.setItem('clicados', JSON.stringify(clicados));
-  
-    document.getElementById(botaoId).classList.add('clicked');
-  
-    verificarCliqueTotal();
+document.addEventListener("DOMContentLoaded", function() {
+  const popupContainer = document.querySelector(".popup-container");
+  const overlay = document.querySelector(".overlay");
+  const btnSim = document.getElementById("btnSim");
+  const btnNao = document.getElementById("btnNao");
+  const btnX = document.getElementById("btnX");
+
+  setTimeout(function() {
+    overlay.style.display = "block";
+    setTimeout(function() {
+      overlay.style.opacity = 1;
+      popupContainer.querySelector(".popup").style.opacity = 1;
+      popupContainer.querySelector(".popup").style.transform = "scale(1)";
+    }, 10);
+  }, 500);
+
+  function fecharPopup() {
+    overlay.style.opacity = 0;
+    popupContainer.querySelector(".popup").style.opacity = 0;
+    popupContainer.querySelector(".popup").style.transform = "scale(0.9)";
+    setTimeout(function() {
+      overlay.style.display = "none";
+    }, 300);
   }
-  
-  function verificarCliqueTotal() {
-    let clicados = JSON.parse(localStorage.getItem('clicados')) || [];
-    let botoes = ['btn1', 'btn2', 'btn3', 'btn4'];
-    let botoesNaoClicados = botoes.filter(botao => !clicados.includes(botao));
-  
-    if (botoesNaoClicados.length === 0) {
-      window.location.href = ""; 
-    } else {
-      window.location.href = "/GameOverPage/index.html";
-    }
+
+  function clicar(resposta) {
+    console.log("Resposta: " + resposta);
+    fecharPopup();
   }
-  
+
+  btnSim.addEventListener("click", function() {
+    clicar('Sim');
+  });
+
+  btnNao.addEventListener("click", function() {
+    clicar('Não');
+  });
+
+  btnX.addEventListener("click", function() {
+    clicar('X');
+  });
+});

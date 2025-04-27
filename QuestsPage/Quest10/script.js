@@ -1,22 +1,24 @@
-// Detecta se a página foi recarregada (F5 ou ícone do navegador)
-const navType = performance.getEntriesByType("navigation")[0].type;
+
+// Contador
+let tempo = 5;
+const contadorSpan = document.getElementById("contador");
 
 
-// Se foi um reload E o jogador não clicou no botão, redireciona
-if (navType === "reload" && !sessionStorage.getItem("atualizouManual")) {
-  window.location.href = "/MainScreen/index.html";
-}
+// Muda o número no contador e atualiza
+const intervalo = setInterval(() => {
+  tempo--;
+  contadorSpan.textContent = tempo;
 
-// Quando a página terminar de carregar
-window.addEventListener("load", () => {
-  const botao = document.querySelector("button");
-  // Quando clica no botão redireciona para a pagina de Game over e tira do array de perguntas
-  if (botao) {
-    botao.addEventListener("click", () => {
-      sessionStorage.setItem("atualizouManual", "true");
-      window.location.href = "/GameOverPage/index.html";
-    });
+  if (tempo <= 0) {
+    clearInterval(intervalo);
   }
+}, 1000);
 
-  // Remove a flag depois de um tempo (para futuras tentativas)
-  setTimeout(() => { sessionStorage.removeItem("atualizouManual");}, 500);});
+// Função que verifica se o botão escolhido é correto
+function verificar(correto) {
+    if (correto) {
+      window.location.href = "" // Próxima pergunta
+    } else {
+      window.location.href = "/GameOverPage/index.html" // Pagina de Game Over
+    }
+}

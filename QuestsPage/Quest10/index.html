@@ -12,9 +12,22 @@
   <div class="overlay"></div>
 
   <div class="container">
-    <h1>Atualize a página!</h1>
+
+    <div class="contador-container">
+      <div class="contador-texto">Tempo: <span id="contador">5</span></div>
+    </div>
+
+    <div class="progress-bar-wrapper">
+      <div class="progress-bar-fake"></div>
+    </div>
+
+
+    <h1>O que NaN significa em JavaScript?</h1>
     <div class="button-grid">
-        <button>ATUALIZAR A PÁGINA</button>
+        <button onclick="verificar(false)">Not a Network</button>
+        <button onclick="verificar(false)">Null and None</button>
+        <button onclick="verificar(false)">Negative and Null</button>
+        <button onclick="verificar(true)">Not a Number</button>
     </div>
   </div>
 

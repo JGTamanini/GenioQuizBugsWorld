@@ -11,30 +11,8 @@
   <div class="overlay"></div>
 
   <div class="container">
-    <h1>Qual desses é um tipo primitivo em JavaScript?</h1>
-    <div class="button-grid">
-      
-    <!-- Resposta correta com scroll (boolean) -->
-    <div class="scroll-button" onclick="verificar(true)">
-      <div class="conteudo-scroll">
-        <p style="margin-top: 300px;">boolean</p>
-      </div>
-    </div>
-
-    <!-- Respostas erradas com scroll vazio -->
-    <div class="scroll-button" onclick="verificar(false)">
-      <div class="conteudo-scroll"></div>
-    </div>
-
-    <div class="scroll-button" onclick="verificar(false)">
-      <div class="conteudo-scroll"></div>
-    </div>
-
-    <div class="scroll-button" onclick="verificar(false)">
-      <div class="conteudo-scroll"></div>
-    </div>
-
-    </div>
+    <h1 id="pergunta">Clique duas vezes no botão</h1>
+    <button id="lagBotao" onclick="clicarLag()">CLIQUE</button>
   </div>
 
   <script type="module" src="script.js"></script>
