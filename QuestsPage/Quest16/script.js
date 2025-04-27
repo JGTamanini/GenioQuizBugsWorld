@@ -1,3 +1,7 @@
+import {GerenciadorDeFases} from "../../Classes/QuestManager.js"
+
+const questManager = new GerenciadorDeFases();
+
 let esperando = false;
 let podeAvancar = false;
 const botao = document.getElementById("lagBotao");
@@ -11,7 +15,7 @@ function clicarLag() {
 
   if (podeAvancar) {
     // Segunda tentativa correta, avança
-    window.location.href = "";
+    questManager.irParaProximaFase();
     return;
   }
 
@@ -27,3 +31,5 @@ function clicarLag() {
     botao.classList.remove("aguarde");
   }, 4000); // 4 segundos
 }
+
+window.clicarLag = clicarLag

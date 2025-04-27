@@ -1,6 +1,6 @@
-class GerenciadorDeFases {
+export class GerenciadorDeFases {
     constructor() {
-      this.totalFases = 16;
+      this.totalFases = 15;
       this.fasesPorJogo = 10;
       this.prefixoCaminho = "/QuestsPages/Quest";}
   
@@ -24,7 +24,7 @@ class GerenciadorDeFases {
       let atual = parseInt(sessionStorage.getItem("faseAtual"));
   
       if (atual >= ordem.length) {
-        window.location.href = "";  
+        window.location.href = "../MainScreen/index.html";  
       } else {
         const proximaFase = ordem[atual];
   
