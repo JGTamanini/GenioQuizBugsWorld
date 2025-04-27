@@ -1,6 +1,6 @@
-import {QuestManager} from "../Classes/QuestManager.js"
+import {GerenciadorDeFases} from "../Classes/QuestManager.js"
 
-const questManager = new QuestManager();
+const questManager = new GerenciadorDeFases();
 
 function iniciar() {
     questManager.iniciarJogo();
@@ -17,3 +17,10 @@ function fecharModal() {
     document.getElementById("modal-instrucoes").classList.add("hidden");
     document.getElementById("modal-creditos").classList.add("hidden");
 }
+
+window.onload = () => {
+    window.iniciar = iniciar;
+    window.instrucoes = instrucoes;
+    window.creditos = creditos;
+    window.fecharModal = fecharModal;
+};  
