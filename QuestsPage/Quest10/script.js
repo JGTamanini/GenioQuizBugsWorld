@@ -1,3 +1,16 @@
+// Importa as classes que controlam as fases
+import { GerenciadorDeFases } from "../../Classes/QuestManager.js"; 
+
+// Função para avançar para a próxima fase
+function avancarFase() {
+  const gerenciador = new GerenciadorDeFases();
+  gerenciador.irParaProximaFase();
+}
+
+// Função para ir para a tela de Game Over
+function gameOver() {
+  window.location.href = "../../GameOverPage/index.html"; // <-- Troque se seu caminho for diferente
+}
 
 // Contador
 let tempo = 5;
@@ -17,8 +30,11 @@ const intervalo = setInterval(() => {
 // Função que verifica se o botão escolhido é correto
 function verificar(correto) {
     if (correto) {
-      window.location.href = "" // Próxima pergunta
+      avancarFase();
     } else {
-      window.location.href = "/GameOverPage/index.html" // Pagina de Game Over
+      gameOver()
     }
 }
+
+// Tornar a função acessível pelo HTML
+window.verificar = verificar;
