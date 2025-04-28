@@ -50,7 +50,7 @@
   h1 {
     color: #fff ;
     font-size: 70px;
-    margin-bottom: 125px;
+    margin-bottom: 85px;
     text-shadow: 2px 2px 8px #000;
   }
 
@@ -95,7 +95,7 @@
   .progress-bar-fake {
     width: 0%;
     height: 100%;
-    background-color: #ff4444;
+    background-color: #4489ff;
     animation: fakeProgress 5s linear forwards;
   }
   
@@ -105,9 +105,9 @@
   }
   
   .contador-container {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     color: white;
-    font-size: 36px;
+    font-size: 45px;
     text-shadow: 2px 2px 8px #000;
   }
   

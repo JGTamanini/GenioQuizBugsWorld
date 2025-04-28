@@ -49,8 +49,10 @@
   }
   
   h1 {
+    text-align: center;
+    width: 70%;
     color: #fff ;
-    font-size: 70px;
+    font-size: 50px;
     margin-bottom: 125px;
     text-shadow: 2px 2px 8px #000;
   }

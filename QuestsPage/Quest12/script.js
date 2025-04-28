@@ -2,9 +2,23 @@ import {GerenciadorDeFases} from "../../Classes/QuestManager.js"
 
 const questManager = new GerenciadorDeFases();
 
-const palavraCorreta = "TECNOLOGIA";
+const opsPalavras = [
+  "ALGORITMO",
+  "VARIAVEL",
+  "FUNCAO",
+  "COMPILADOR",
+  "DEPURACAO",
+  "SINTAXE",
+  "FRAMEWORK",
+  "BIBLIOTECA",
+  "CODIFICACAO",
+  "SCRIPT",
+  "TECNOLOGIA"
+];
+const palavraCorreta = opsPalavras[Math.floor(Math.random() * opsPalavras.length)];
+const titulo = document.getElementById("palavra-titulo");
+titulo.innerText = `DIGITE A PALAVRA "${palavraCorreta}"`;
 
-    // Mapeia o teclado trocado: tecla pressionada => letra visível
     const mapaBugado = {
         A: 'M', B: 'F', C: 'Z', D: 'L', E: 'J', F: 'A', G: 'D', 
         H: 'E', I: 'Y', J: 'O', K: 'G', L: 'S', M: 'W', N: 'T', 

@@ -1,21 +1,3 @@
-// Defina as fases do jogo
-export const fases = [
-    { id: 1, pergunta: "Qual palavra está correta?" },
-    { id: 2, pergunta: "Qual a letra entre A e C?" },
-    { id: 3, pergunta: "Qual é o nome do programa que imprime seu próprio código-fonte sem receber entrada externa?" },
-    { id: 5, pergunta: "Qual é o resultado da expressão `3 + '3'` em JavaScript?" },
-    { id: 6, pergunta: "Como centraliza uma div?" },
-    { id: 7, pergunta: "Permitir cookies?" },
-    { id: 8, pergunta: "Clique na letra&nbsp;" },
-    { id: 9, pergunta: "ATUALIZAR A PÁGINA" },
-    { id: 10, pergunta: "O que NaN significa em JavaScript?" },
-    { id: 11, pergunta: "Qual a resposta Correta?" },
-    { id: 12, pergunta: "DIGITE A PALAVRA 'TECNOLOGIA'" },
-    { id: 13, pergunta: "QUAL A PRIMEIRA ALTERNATIVA?" },
-    { id: 14, pergunta: "Qual desses é um tipo primitivo em JavaScript?" },
-    { id: 15, pergunta: "Clique duas vezes no botão" }
-];
-
 // Classe Fase
 export class Fase {
     constructor(id, pergunta) {
@@ -33,3 +15,22 @@ export class Fase {
         }
     }
 }
+
+// Defina as fases do jogo
+export const fases = [
+    new Fase(1, "Qual palavra está correta?"),
+    new Fase(2, "Qual a letra entre A e C?"),
+    new Fase(3, "Qual é o nome do programa que imprime seu próprio código-fonte sem receber entrada externa?"),
+    new Fase(4, "Essa pergunta já foi feita?"),
+    new Fase(5, "Qual é o resultado da expressão `3 + '3'` em JavaScript?"),
+    new Fase(6, "Como centraliza uma div?"),
+    new Fase(7, "Permitir cookies?"),
+    new Fase(8, "Clique na letra&nbsp;"),
+    new Fase(9, "ATUALIZAR A PÁGINA"),
+    new Fase(10, "O que NaN significa em JavaScript?"),
+    new Fase(11, "Qual a resposta Correta?"),
+    new Fase(12, "DIGITE A PALAVRA 'TECNOLOGIA'"),
+    new Fase(13, "QUAL A PRIMEIRA ALTERNATIVA?"),
+    new Fase(14, "Qual desses é um tipo primitivo em JavaScript?"),
+    new Fase(15, "Clique duas vezes no botão")
+];
