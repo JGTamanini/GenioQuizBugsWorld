@@ -7,21 +7,22 @@
 </head>
 <body>
 
-  <div class="background"></div>
+  <div class="background"></div> <!-- definir o fundo da página -->
 
-  <div class="overlay"></div>
+  <div class="overlay"></div> 
 
-  <div class="popup-container">
+  <div class="popup-container"> <!-- Contêiner para o popup, posicionado no centro da tela -->
     <div class="popup">
-      <h2>Permitir cookies?</h2>
-      <div class="button-grid">
-        <button id="btnSim" onclick="clicar('Sim')">Sim</button>
-        <button id="btnNao" onclick="clicar('Não')">Não</button>
-        <button id="btnX" onclick="clicar('X')">X</button>
+      <h2>Permitir cookies?</h2> 
+      <p class="msg-cookie">Deseja adicionar cookies para melhorar sua experiência?</p>
+      <div class="button-grid"> 
+        <button id="btnSim">Sim</button> 
+        <button id="btnNao">Não</button> 
+        <button id="btnX">X</button> 
       </div>
     </div>
   </div>
-  
+
   <script type="module" src="script.js"></script>
 </body>
 </html>

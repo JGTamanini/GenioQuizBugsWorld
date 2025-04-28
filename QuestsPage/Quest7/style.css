@@ -32,69 +32,125 @@ body, html {
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7); /* Menos escuro, mais visível */
   z-index: 1;
   display: none; /* O overlay começa escondido */
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.5s ease-in-out; /* Suaviza a animação de exibição */
 }
 
 .popup-container {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-40%, -50%); /* Mover para a direita ajustando a posição */
   z-index: 2;
 }
 
+@keyframes popupAnim {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
 .popup {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.8); /* Mantém o fundo escuro, mas mais suave */
+  padding: 30px;
+  border-radius: 15px;
   text-align: center;
   color: white;
-  width: 400px;
-  max-width: 80%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  width: 550px;
+  max-width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  position: relative; /* Para que possamos posicionar o botão "X" em relação ao título */
 }
 
 .popup h2 {
-  font-size: 24px;
-  margin-bottom: 30px;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2; /* Garante que o título fique acima do botão "X" */
+}
+
+.msg-cookie {
+  font-size: 14px; /* Pequeno */
+  color: rgba(255, 255, 255, 0.8); /* Cor suave para o texto */
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .button-grid {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 20px;
-  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  justify-items: center;
   align-items: center;
+  margin-top: 30px; /* Dá mais espaçamento entre a mensagem e os botões */
 }
 
 button {
   height: 60px;
   width: 180px;
-  font-size: 20px;
-  padding: 12px 30px;
+  font-size: 18px;
+  padding: 12px 25px;
   margin: 12px 0;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: white;
-  border: 2px solid white;
+  border: 2px solid transparent;
   cursor: pointer;
-  transition: border-color 0.3s ease, background 0.3s ease;
+  transition: background-color 0.3s, border 0.3s, transform 0.2s ease-in-out;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  font-weight: bold; /* Deixa o texto mais visível */
 }
 
 button:hover {
   border-color: #00aaff;
   background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px); /* Adiciona um efeito de "levitação" ao passar o mouse */
 }
 
 button:focus {
   outline: none;
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.6);
+}
+
+/* Estilo para o botão X (quadrado) */
+#btnX {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px; /* Faz o botão ser quadrado */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#btnX:hover {
+  background: darkred;
+}
+
+#btnX:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
 }

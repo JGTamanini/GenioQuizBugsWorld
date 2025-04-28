@@ -2,26 +2,27 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gênio Quiz: Mundo dos Bugs</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="background"></div>
-
   <div class="overlay"></div>
 
   <div class="container">
     <h1>Qual é a resposta correta?</h1>
 
     <div class="button-grid">
-        <button onclick="verificar('33')">33</button>
-        <button onclick="verificar('6')">6</button>
-        <button onclick="verificar('Erro')">Erro</button>
-        <button onclick="verificar('NaN')">NaN</button>
+      <button type="button" onclick="verificar('33')">33</button>
+      <button type="button" onclick="verificar('6')">6</button>
+      <button type="button" onclick="verificar('Erro')">Erro</button>
+      <button type="button" onclick="verificar('NaN')">NaN</button>
     </div>
+
     <div class="hidden-question">
-        Qual é o resultado da expressão `3 + '3'` em JavaScript?
+      Qual é o resultado da expressão <code>3 + '3'</code> em JavaScript?
     </div>
   </div>
 
