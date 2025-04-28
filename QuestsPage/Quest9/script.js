@@ -9,7 +9,7 @@ function avancarFase() {
 
 // Função para ir para a tela de Game Over
 function gameOver() {
-  window.location.href = "../../GameOverPage/index.html"; // <-- TROCAR aqui o caminho se precisar
+  window.location.href = "../../GameOverPage/index.html";
 }
 
 // Detecta se a página foi recarregada (F5 ou ícone do navegador)

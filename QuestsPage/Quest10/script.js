@@ -9,7 +9,7 @@ function avancarFase() {
 
 // Função para ir para a tela de Game Over
 function gameOver() {
-  window.location.href = "../../GameOverPage/index.html"; // <-- Troque se seu caminho for diferente
+  window.location.href = "../../GameOverPage/index.html";
 }
 
 // Contador
