@@ -1,7 +1,7 @@
 # Gênio Quiz: Mundo dos Bugs
 
 ## Guia de Instalação
-Baixe e execute o index.html salvo na pasta MainScreen
+Baixe e execute o index.html salvo na pasta MainScreen utlizando a extensão LiveServer do Visual Studio Code
 
 ## 1. Escopo
 O **Gênio Quiz: Mundo dos Bugs** é um quiz interativo com desafios lógicos e visuais que simulam comportamentos incomuns ou bugs.  
