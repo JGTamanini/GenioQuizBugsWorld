@@ -1,4 +1,3 @@
-// Importa o Gerenciador de Fases para controlar o avanço
 import { GerenciadorDeFases } from "../../Classes/QuestManager.js"; 
 
 // Função para avançar para a próxima fase
@@ -9,7 +8,7 @@ function avancarFase() {
 
 // Função para ir para a tela de Game Over
 function gameOver() {
-  window.location.href = "../../GameOverPage/index.html"; // <-- Trocar o caminho se for necessário
+  window.location.href = "../../GameOverPage/index.html";
 }
 
 // Armazena o nome correto que está escondido no título da página

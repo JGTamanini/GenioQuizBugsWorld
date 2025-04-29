@@ -1,4 +1,3 @@
-// Importa as classes que controlam as fases
 import { GerenciadorDeFases } from "../../Classes/QuestManager.js"; 
 
 // Seleciona todos os botões de resposta
@@ -12,7 +11,7 @@ function avancarFase() {
 
 // Função para ir para a tela de Game Over
 function gameOver() {
-  window.location.href = "../../GameOverPage/index.html"; // <-- TROCAR aqui o caminho se precisar
+  window.location.href = "../../GameOverPage/index.html";
 }
 
 // Para cada botão, adiciona o comportamento de clique
