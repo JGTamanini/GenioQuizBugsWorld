@@ -1,17 +1,23 @@
 // Classe Fase
 export class Fase {
+    // Construtor da classe: recebe um ID e uma pergunta, e armazena como propriedades do objeto
     constructor(id, pergunta) {
-        this.id = id;
-        this.pergunta = pergunta;
+        this.id = id;           // Identificador único da fase
+        this.pergunta = pergunta; // Texto da pergunta associada à fase
     }
 
+    // Método estático que permite obter a pergunta de uma fase com base no ID
+    // - `id`: o ID da fase que se deseja buscar
+    // - `fases`: um array contendo todas as instâncias da classe Fase
     static obterPerguntaPorId(id, fases) {
-        const fase = fases.find(fase => fase.id === id); // Encontra a fase com o ID correspondente
+        // Procura no array a fase com o ID correspondente
+        const fase = fases.find(fase => fase.id === id);
+
         if (fase) {
-            return fase.pergunta; // Retorna a pergunta da fase
+            return fase.pergunta; // Se encontrada, retorna a pergunta
         } else {
-            console.error(`Fase com id ${id} não encontrada!`);
-            return null;
+            console.error(`Fase com id ${id} não encontrada!`); // Exibe erro se não encontrar
+            return null; // Retorna null em caso de erro
         }
     }
 }

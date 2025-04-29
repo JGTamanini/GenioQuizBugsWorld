@@ -1,60 +1,69 @@
+// Importa a classe GerenciadorDeFases, que gerencia o progresso entre fases
 import { GerenciadorDeFases } from "../../Classes/QuestManager.js";
 
-const questManager = new GerenciadorDeFases(); // Cria uma instância do GerenciadorDeFases
+// Cria uma instância do gerenciador de fases
+const questManager = new GerenciadorDeFases();
 
 document.addEventListener("DOMContentLoaded", function() {
-  const popupContainer = document.querySelector(".popup-container");
-  const overlay = document.querySelector(".overlay");
-  const btnSim = document.getElementById("btnSim");
-  const btnNao = document.getElementById("btnNao");
-  const btnX = document.getElementById("btnX");
+  // Seleciona elementos do DOM que serão manipulados
+  const popupContainer = document.querySelector(".popup-container"); // Container do popup
+  const overlay = document.querySelector(".overlay");                 // Fundo escurecido
+  const btnSim = document.getElementById("btnSim");                   // Botão "Sim"
+  const btnNao = document.getElementById("btnNao");                   // Botão "Não"
+  const btnX = document.getElementById("btnX");                       // Botão "X"
 
-  // Abre o popup após 500ms
+  // Aguarda 500ms após o carregamento da página e então exibe o popup com animação
   setTimeout(function() {
-    overlay.style.display = "block";
+    overlay.style.display = "block"; // Mostra o fundo escurecido
     setTimeout(function() {
+      // Anima a opacidade e escala do popup (efeito de aparecer suavemente)
       overlay.style.opacity = 1;
       popupContainer.querySelector(".popup").style.opacity = 1;
       popupContainer.querySelector(".popup").style.transform = "scale(1)";
     }, 10);
   }, 500);
 
-  // Fecha o popup com animação e chama o callback após o fechamento
+  // Função que fecha o popup com animação e executa uma ação (callback) após o fechamento
   function fecharPopup(callback) {
+    // Inicia a animação de fechamento
     overlay.style.opacity = 0;
     popupContainer.querySelector(".popup").style.opacity = 0;
     popupContainer.querySelector(".popup").style.transform = "scale(0.9)";
+    
+    // Aguarda a animação terminar (300ms) e depois oculta o overlay
     setTimeout(function() {
       overlay.style.display = "none";
-      if (callback) callback(); // Se tiver callback, chama depois de fechar
+      if (callback) callback(); // Executa a função passada (se existir)
     }, 300);
   }
 
-  // Função que vai verificar a resposta e agir conforme a escolha
+  // Função que verifica a resposta e age de acordo com ela
   function verificar(correto) {
     if (correto) {
-      questManager.irParaProximaFase(); // Se for correto, vai para a próxima fase
+      questManager.irParaProximaFase(); // Resposta correta: avança para a próxima fase
     } else {
-      window.location.href = "/GameOverPage/index.html"; // Se for incorreto, vai para a página de Game Over
+      window.location.href = "/GameOverPage/index.html"; // Resposta errada: redireciona para a tela de Game Over
     }
   }
 
-  // Função de clicar nos botões
+  // Lida com os cliques dos botões do popup
   function clicar(resposta) {
-    console.log("Resposta: " + resposta);
+    console.log("Resposta: " + resposta); // Apenas para depuração no console
     
     if (resposta === 'X') {
+      // Se o jogador clicar em 'X', fecha o popup e vai para a próxima fase
       fecharPopup(() => {
-        questManager.irParaProximaFase(); // Vai para a próxima fase se clicar no 'X'
+        questManager.irParaProximaFase();
       });
     } else if (resposta === 'Sim' || resposta === 'Não') {
+      // Se clicar 'Sim' ou 'Não', considera como erro e redireciona para Game Over
       fecharPopup(() => {
-        verificar(false); // Se clicar 'Sim' ou 'Não', o jogo termina e vai para a página Game Over
+        verificar(false);
       });
     }
   }
 
-  // Adiciona os eventos de clique aos botões
+  // Associa os botões do DOM às funções de clique com os respectivos valores
   btnSim.addEventListener("click", () => clicar('Sim'));
   btnNao.addEventListener("click", () => clicar('Não'));
   btnX.addEventListener("click", () => clicar('X'));

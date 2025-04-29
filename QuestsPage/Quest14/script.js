@@ -1,13 +1,18 @@
-import {GerenciadorDeFases} from "../../Classes/QuestManager.js"
+// Importa a classe responsável por gerenciar o fluxo das fases do jogo
+import { GerenciadorDeFases } from "../../Classes/QuestManager.js";
 
+// Cria uma instância do GerenciadorDeFases, que será usada para navegar entre fases
 const questManager = new GerenciadorDeFases();
 
 function verificar(correto) {
     if (correto) {
-      questManager.irParaProximaFase();
+        // Se a resposta estiver correta, avança para a próxima fase
+        questManager.irParaProximaFase();
     } else {
-      window.location.href = "/GameOverPage/index.html"
+        // Se estiver errada, redireciona o jogador para a tela de Game Over
+        window.location.href = "/GameOverPage/index.html";
     }
 }
 
-window.verificar = verificar
+// Torna a função verificar acessível no escopo global (por exemplo, para ser chamada no HTML com onclick="verificar(true)")
+window.verificar = verificar;
